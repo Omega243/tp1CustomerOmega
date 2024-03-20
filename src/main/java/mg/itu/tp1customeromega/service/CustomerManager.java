@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service; // A MODIFIER suivant le paquetage de base...
+package mg.itu.tp1customeromega.service;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
