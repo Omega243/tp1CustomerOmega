@@ -56,9 +56,9 @@
                     <h:outputText value="#{item.zip.zipCode}"/>
                 </p:column>
                 
-                <p:column sortBy="#{item.state}, #{item.city}" filterBy="#{item.state}, #{item.city}" filterMatchMode="contains" filterable="true">
+                <p:column sortBy="#{item.state}, #{item.city}" filterBy="#{item.state}" filterMatchMode="contains" filterable="true">
                     <f:facet name="header">
-                        <h:outputText value="Etat/Ville"/>
+                        <h:outputText value="Etat"/>
                     </f:facet>
                     <h:outputText value="#{item.state}, #{item.city}"/>
                 </p:column>
