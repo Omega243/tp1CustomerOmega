@@ -4,11 +4,15 @@
  */
 package mg.itu.tp1customeromega.jsf;
 
+import org.primefaces.model.FilterMeta;
+
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.faces.view.ViewScoped;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import mg.itu.tp1customeromega.entity.Customer;
 import mg.itu.tp1customeromega.service.CustomerManager;
 
@@ -38,5 +42,12 @@ public class CustomerBean implements Serializable {
             customerList = customerManager.getAllCustomers();
         }
         return customerList;
+    }
+    
+    public List<Customer> customFilter(List<Customer> customers, Map<String, FilterMeta> filters) {
+        customers.sort(Comparator.comparing(Customer::getState)
+                                  .thenComparing(Customer::getCity));
+
+        return customers;
     }
 }

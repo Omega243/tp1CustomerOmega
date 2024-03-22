@@ -56,11 +56,18 @@
                     <h:outputText value="#{item.zip.zipCode}"/>
                 </p:column>
                 
-                <p:column sortBy="#{item.state}" filterBy="#{item.state}" filterMatchMode="contains" filterable="true">
+                <p:column sortBy="#{item.state}, #{item.city}" filterBy="#{item.state}, #{item.city}" filterMatchMode="contains" filterable="true">
                     <f:facet name="header">
-                        <h:outputText value="Etat"/>
+                        <h:outputText value="Etat/Ville"/>
                     </f:facet>
-                    <h:outputText value="#{item.state}"/>
+                    <h:outputText value="#{item.state}, #{item.city}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.state},#{item.city}" filterFunction="#{customerBean.customFilter}">
+                    <f:facet name="header">
+                        <h:outputText value="Tri Etat/Ville"/>
+                    </f:facet>
+                    <h:outputText value="#{item.state}, #{item.city}"/>
                 </p:column>
                 
                 <f:facet name="paginatorTopLeft">
