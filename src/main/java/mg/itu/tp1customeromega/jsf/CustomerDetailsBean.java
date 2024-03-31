@@ -8,8 +8,11 @@ import jakarta.inject.Named;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 import mg.itu.tp1customeromega.entity.Customer;
+import mg.itu.tp1customeromega.entity.Discount;
 import mg.itu.tp1customeromega.service.CustomerManager;
+import mg.itu.tp1customeromega.service.DiscountManager;
 
 /**
  * Backing bean pour la page customerDetails.xhtml
@@ -24,6 +27,13 @@ public class CustomerDetailsBean implements Serializable {
     
     @Inject
     private CustomerManager customerManager;
+    
+    @Inject
+    private DiscountManager discountManager;
+    
+    public CustomerDetailsBean(){
+    
+    }
     
     public int getIdCustomer() {
         return idCustomer;
@@ -42,6 +52,8 @@ public class CustomerDetailsBean implements Serializable {
         return customer;
     }
     
+    
+    
     /**
    * Action handler - met à jour dans la base de données les données du client
    * contenu dans la variable d'instance customer.
@@ -57,5 +69,14 @@ public class CustomerDetailsBean implements Serializable {
     public void loadCustomer() {
         this.customer = customerManager.findById(idCustomer);
     }
+
+    /**
+    * Retourne la liste de tous les Discount.
+     * @return 
+    */
+    public List<Discount> getDiscounts() {
+      return discountManager.getAllDiscounts();
+    }
+    
     
 }

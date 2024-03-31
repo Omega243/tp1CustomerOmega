@@ -50,7 +50,7 @@
                     
                     <h:outputLabel value="Discount:" for="discount" />
                     <h:selectOneMenu id="discount" value="#{customerDetailsBean.customer.discount}" title="Discount" required="true" requiredMessage="The Discount field is required.">
-                        <f:selectItems value="#{fixme}"/>
+                        <f:selectItems value="#{customerDetailsBean.getDiscounts()}" var="discount" itemLabel="#{discount.code}"/>
                     </h:selectOneMenu>
                     
                     
