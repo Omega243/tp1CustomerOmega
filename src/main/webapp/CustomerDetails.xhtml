@@ -49,16 +49,20 @@
                     <h:inputText id="creditLimit" value="#{customerDetailsBean.customer.creditLimit}" title="CreditLimit" />
                     
                     <h:outputLabel value="Discount:" for="discount" />
-                    <h:selectOneMenu 
-                        id="discount" value="#{customerDetailsBean.customer.discount}" 
-                        title="Discount" required="true" requiredMessage="The Discount field is required.">
-                        <f:selectItems value="#{customerDetailsBean.discounts}"
-                                       var="discount"
-                                       itemLabel="#{discount.code} (#{discount.rate} %)" 
-                                       itemValue="#{discount}"/>
+                    <h:selectOneMenu id="discount" value="#{customerDetailsBean.customer.discount}"   
+                                    title="Discount" required="true" 
+                                    requiredMessage="The Discount field is required."  
+                                    converter="discountConverter">   
+                        <f:selectItems value="#{customerDetailsBean.discounts}"  
+                                      var="discount"   
+                                      itemLabel="#{discount.code} : #{discount.rate} %" 
+                                      itemValue="#{discount}" />  
                     </h:selectOneMenu>
                     
                 </h:panelGrid>
+                <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
+                <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsBean.update}"/>
+                <h:messages/>
             </h:form>
         </f:view>
 

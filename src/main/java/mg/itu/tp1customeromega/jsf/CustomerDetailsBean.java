@@ -22,7 +22,7 @@ import mg.itu.tp1customeromega.service.DiscountManager;
 @ViewScoped
 public class CustomerDetailsBean implements Serializable {
 
-    private int idCustomer;
+    private int customerId;
     private Customer customer;
     
     @Inject
@@ -36,11 +36,11 @@ public class CustomerDetailsBean implements Serializable {
     }
     
     public int getIdCustomer() {
-        return idCustomer;
+        return customerId;
     }
     
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setIdCustomer(int customerId) {
+        this.customerId = customerId;
     }
     
     /**
@@ -63,11 +63,11 @@ public class CustomerDetailsBean implements Serializable {
         //Modifie la base de données.
         //Il faut affecter à customer (sera expliqué dans le cours).
         customer = customerManager.update(customer);
-        return "customerList";
+        return "CustomerList";
     }
     
     public void loadCustomer() {
-        this.customer = customerManager.findById(idCustomer);
+        this.customer = customerManager.findById(customerId);
     }
 
     /**

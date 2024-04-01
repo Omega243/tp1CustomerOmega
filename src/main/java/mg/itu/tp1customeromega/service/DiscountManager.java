@@ -8,6 +8,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import mg.itu.tp1customeromega.entity.Discount;
 
@@ -24,6 +25,11 @@ public class DiscountManager {
       Query query = em.createNamedQuery("Discount.findAll");
       return query.getResultList();  
     }  
+    
+    @Transactional
+    public Discount update(Discount discount) {
+      return em.merge(discount);
+    }
     
     public Discount findById(String code) {
         return em.find(Discount.class, code);
