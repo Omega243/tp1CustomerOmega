@@ -15,7 +15,7 @@
         <f:view>
 
 
-            <h:form>
+            <h:form rendered='#{customerDetailsBean.customer != null}'>
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="CustomerId:" for="customerId" />
@@ -64,6 +64,13 @@
                 <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsBean.update}"/>
                 <h:messages/>
             </h:form>
+            <h:panelGroup>
+                <h:outputText value="Aucun client avec l'id #{customerDetailsBean.idCustomer} !" rendered='#{customerDetailsBean.customer == null}'/>
+                <div style="margin-top: 10px;">
+                    <h:button id="back" value="Revenir à la liste" outcome="CustomerList"
+                      rendered="#{empty customerDetailsBean.customer}" />
+                </div>
+            </h:panelGroup>
         </f:view>
 
     </h:body>
